@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
 import ContactForm from './components/ContactForm'
 import ContactList from './components/ContactList'
-// import SearchBox from './components/SearchBox'
+import SearchBox from './components/SearchBox'
 import { selectContacts, selectError, selectIsLoading } from './redux/selectors'
 import { useEffect } from 'react'
 import { FetchContacts } from './redux/reduxContacts'
@@ -21,7 +21,7 @@ console.log(contacts)
     {error && <p>an error occurred</p>}
     {contacts.length > 0 && (<ContactList />)}
     <ContactForm />
-    {/* <SearchBox /> */}
+    <SearchBox />
     </>
   )
 }

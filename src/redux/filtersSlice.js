@@ -6,8 +6,8 @@ const slice = createSlice({
 	  status: "",
   },
   reducers: {
-    changeFilter(state, action) {
-        state.status = action.payload;
+    changeFilter(state, {payload}) {
+        state.status = payload;
     },
   },
 });
@@ -17,4 +17,4 @@ const slice = createSlice({
 export const { changeFilter } = slice.actions;
 
 // Експортуємо редюсер слайсу
-export default slice.reducer;
+export const filterReducer = slice.reducer;
