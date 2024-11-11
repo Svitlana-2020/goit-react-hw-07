@@ -9,11 +9,11 @@ const ContactList = () => {
     
 console.log(listContacts)
 
-const filteredContact = listContacts.items.filter((contact) => contact.username.toLowerCase().includes(filter.toLowerCase()));
+const filteredContact = listContacts.filter((contact) => contact.username.toLowerCase().includes(filter.toLowerCase()));
 
     return (
       <ul className={css.list}>
-        {filteredContact.items.map((contact) => (
+        {filteredContact.map((contact) => (
           <li key={contact.id} className={css.listItem}>
             <Contacts contact={contact}  />
           </li>

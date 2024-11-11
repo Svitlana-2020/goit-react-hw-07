@@ -19,9 +19,9 @@ const ContactForm = () => {
     evt.preventDefault();
 
 const contact = {
-    username: query.username,
-    number: query.number,
-}
+    name: query.username,
+    phone: query.number,
+};
 
     dispatch(addContact(contact));
     setQuery({username: '', number: ''});
