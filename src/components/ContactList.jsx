@@ -9,7 +9,7 @@ const ContactList = () => {
     
 console.log(listContacts)
 
-const filteredContact = listContacts.filter((contact) => contact.username.toLowerCase().includes(filter.toLowerCase()));
+const filteredContact = listContacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()));
 
     return (
       <ul className={css.list}>
