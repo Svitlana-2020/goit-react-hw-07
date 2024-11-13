@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { addContact, deleteContact, FetchContacts } from './contactsOps';
-// import { addContact } from "../../redux/actions";
+import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { addContact, deleteContact, fetchContacts } from './contactsOps';
+import { selectContacts, selectFilter } from './selectors';
+
 const initialState = {
     items: [],
     loading: false,
@@ -13,17 +14,17 @@ const slice = createSlice({
    extraReducers: 
    builder => builder
    
-   .addCase(FetchContacts.pending, (state) => {
+   .addCase(fetchContacts.pending, (state) => {
     state.loading = true;
     state.error = null;
    })
    
-   .addCase(FetchContacts.fulfilled, (state, {payload}) => {
+   .addCase(fetchContacts.fulfilled, (state, {payload}) => {
     state.loading = false;
     state.items = payload;
 })
 
-.addCase(FetchContacts.rejected, (state, {payload}) => {
+.addCase(fetchContacts.rejected, (state, {payload}) => {
     state.loading = false;
     state.error = payload;
     state.items = [];
@@ -63,25 +64,12 @@ const slice = createSlice({
 })
 })
 
+export const selectFilteredContacts = createSelector(
+    [selectContacts, selectFilter], (contacts, filter) => {
+        return contacts.filter(contact =>
+            contact.name.toLowerCase().includes(filter.toLowerCase())
+        );
+    }
+)
 
 export const ContactsReducer = slice.reducer;
-
-
-
-//    {
-//         addContact: (state, action) => {
-//             state.contacts.push(action.payload);
-//         },
-//         deleteContact: (state, action) => {
-//             state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
-//              },
-//              },
-//     });
-
-    
-  
-//   // Експортуємо фабрики екшенів
-//   export const { addContact, deleteContact} = slice.actions;
-  
-//   // Експортуємо редюсер слайсу
-//   export default slice.reducer;

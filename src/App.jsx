@@ -5,11 +5,11 @@ import ContactList from './components/ContactList'
 import SearchBox from './components/SearchBox'
 import { selectContacts, selectError, selectIsLoading } from './redux/selectors'
 import { useEffect } from 'react'
-import { FetchContacts } from './redux/contactsOps'
+import { fetchContacts } from './redux/contactsOps'
 
 function App() {
   const dispatch = useDispatch();
-  useEffect (() => {dispatch(FetchContacts())}, [dispatch])
+  useEffect (() => {dispatch(fetchContacts())}, [dispatch])
 const isLoading = useSelector(selectIsLoading);
 const error = useSelector(selectError);
 const contacts = useSelector(selectContacts);
